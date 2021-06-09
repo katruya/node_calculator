@@ -92,20 +92,6 @@ window.onload = () => {
     });
     // completing operation
     equalsBtn.addEventListener("click", () => {
-        // 1. Determine if the input is valid
-        // 2. If valid, parse the string
-        // 3. Evaluate the expression
-        // 4. Store in result
-        // 5. Display in calculatorIO
-        let result = '';
-        // console.log(result); // debugging
-        // TO DO
-        // if (!InputIsValid(result)) {
-        //     result = 'Error: Invalid Input.';
-        // }
-        // else {
-        //     // evaluate
-        // }
         calculatorIO.innerHTML = `<h1>${EvaluateExpression(Memory)}</h1>`;
     });
 };
