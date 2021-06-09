@@ -1,6 +1,5 @@
 import UI from './app.js';
-
-const Definition: string = `
+const Definition = `
     <div class="container m-auto">
     <div class="row">
         <span class="col btn btn-dark btn-outline-info">
@@ -63,5 +62,5 @@ const Definition: string = `
     </div>
     </div>
 `;
-
 UI(Definition);
+//# sourceMappingURL=index.js.map

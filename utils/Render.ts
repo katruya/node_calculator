@@ -1,4 +1,4 @@
-const Render = (interfaceHTML: string = ''): string => {
+const Render = (interfaceHTML: string, app: Element): string => {
     return `
         ${interfaceHTML}
     `;
