@@ -1,0 +1,5 @@
+.light-up-on-key {
+    transition: all 1s;
+    color: blue;
+    background-color: whitesmoke;
+}

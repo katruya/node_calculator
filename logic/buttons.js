@@ -144,59 +144,127 @@ window.onload = () => {
         equal();
     });
     // pressing keys
-    document.onkeyup = (event) => {
+    document.onkeydown = (event) => {
         switch (event.key) {
             case '0':
+                zero.classList.toggle("light-up-on-key");
                 zeroBtn();
                 break;
             case '1':
+                one.classList.toggle('light-up-on-key');
                 oneBtn();
                 break;
             case '2':
+                two.classList.toggle('light-up-on-key');
                 twoBtn();
                 break;
             case '3':
+                three.classList.toggle('light-up-on-key');
                 threeBtn();
                 break;
             case '4':
+                four.classList.toggle('light-up-on-key');
                 fourBtn();
                 break;
             case '5':
+                five.classList.toggle('light-up-on-key');
                 fiveBtn();
                 break;
             case '6':
+                six.classList.toggle('light-up-on-key');
                 sixBtn();
                 break;
             case '7':
+                seven.classList.toggle('light-up-on-key');
                 sevenBtn();
                 break;
             case '8':
+                eight.classList.toggle('light-up-on-key');
                 eightBtn();
                 break;
             case '9':
+                nine.classList.toggle('light-up-on-key');
                 nineBtn();
                 break;
             case '+':
+                addBtn.classList.toggle('light-up-on-key');
                 add();
                 break;
             case '-':
+                subtractBtn.classList.toggle('light-up-on-key');
                 subtract();
                 break;
             case '*':
+                multiplyBtn.classList.toggle('light-up-on-key');
                 multiply();
                 break;
             case '/':
+                divideBtn.classList.toggle('light-up-on-key');
                 divide();
                 break;
             case '.':
+                decimalBtn.classList.toggle('light-up-on-key');
                 decimal();
                 break;
             case '=':
+                equalsBtn.classList.toggle('light-up-on-key');
                 equal();
                 break;
         }
         if (event.code == 'NumpadEnter' || event.code == 'Enter') {
             equal();
+        }
+    };
+    document.onkeyup = (event) => {
+        switch (event.key) {
+            case '0':
+                zero.classList.toggle("light-up-on-key");
+                break;
+            case '1':
+                one.classList.toggle('light-up-on-key');
+                break;
+            case '2':
+                two.classList.toggle('light-up-on-key');
+                break;
+            case '3':
+                three.classList.toggle('light-up-on-key');
+                break;
+            case '4':
+                four.classList.toggle('light-up-on-key');
+                break;
+            case '5':
+                five.classList.toggle('light-up-on-key');
+                break;
+            case '6':
+                six.classList.toggle('light-up-on-key');
+                break;
+            case '7':
+                seven.classList.toggle('light-up-on-key');
+                break;
+            case '8':
+                eight.classList.toggle('light-up-on-key');
+                break;
+            case '9':
+                nine.classList.toggle('light-up-on-key');
+                break;
+            case '+':
+                addBtn.classList.toggle('light-up-on-key');
+                break;
+            case '-':
+                subtractBtn.classList.toggle('light-up-on-key');
+                break;
+            case '*':
+                multiplyBtn.classList.toggle('light-up-on-key');
+                break;
+            case '/':
+                divideBtn.classList.toggle('light-up-on-key');
+                break;
+            case '.':
+                decimalBtn.classList.toggle('light-up-on-key');
+                break;
+            case '=':
+                equalsBtn.classList.toggle('light-up-on-key');
+                break;
         }
     };
 };
