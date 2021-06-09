@@ -25,7 +25,12 @@ window.onload = () => {
     let equalsBtn = document.getElementById('equals');
     // input area
     let calculatorIO = document.getElementById('calculator-io');
+    // clear, etc
+    let clearBtn = document.getElementById('clear');
     // button functions
+    const clear = () => {
+        calculatorIO.innerHTML = '';
+    };
     const add = () => {
         calculatorIO.innerHTML += `<h1>+</h1>`;
         Memory += '+';
@@ -142,6 +147,10 @@ window.onload = () => {
     // completing operation
     equalsBtn.addEventListener("click", () => {
         equal();
+    });
+    // clear calculator
+    clearBtn.addEventListener("click", () => {
+        clear();
     });
     // pressing keys
     document.onkeydown = (event) => {
