@@ -25,75 +25,180 @@ window.onload = () => {
     let equalsBtn = document.getElementById('equals');
     // input area
     let calculatorIO = document.getElementById('calculator-io');
-    // number button events
-    zero.addEventListener("click", () => {
-        calculatorIO.innerHTML += `<h1>0</h1>`;
-        Memory += '0';
-    });
-    one.addEventListener("click", () => {
+    // button functions
+    const add = () => {
+        calculatorIO.innerHTML += `<h1>+</h1>`;
+        Memory += '+';
+    };
+    const subtract = () => {
+        calculatorIO.innerHTML += `<h1>-</h1>`;
+        Memory += '-';
+    };
+    const multiply = () => {
+        calculatorIO.innerHTML += `<h1>x</h1>`;
+        Memory += '*';
+    };
+    const divide = () => {
+        calculatorIO.innerHTML += `<h1>/</h1>`;
+        Memory += '/';
+    };
+    const equal = () => {
+        calculatorIO.innerHTML = `<h1>${EvaluateExpression(Memory)}</h1>`;
+    };
+    const decimal = () => {
+        calculatorIO.innerHTML += `<h1>.</h1>`;
+        Memory += '.';
+    };
+    const oneBtn = () => {
         // store 1 in input area
         calculatorIO.innerHTML += `<h1>1</h1>`;
         // store for calculation
         Memory += '1';
-    });
-    two.addEventListener("click", () => {
+    };
+    const twoBtn = () => {
         calculatorIO.innerHTML += `<h1>2</h1>`;
         Memory += '2';
-    });
-    three.addEventListener("click", () => {
+    };
+    const threeBtn = () => {
         calculatorIO.innerHTML += `<h1>3</h1>`;
         Memory += '3';
-    });
-    four.addEventListener("click", () => {
+    };
+    const fourBtn = () => {
         calculatorIO.innerHTML += `<h1>4</h1>`;
         Memory += '4';
-    });
-    five.addEventListener("click", () => {
+    };
+    const fiveBtn = () => {
         calculatorIO.innerHTML += `<h1>5</h1>`;
         Memory += '5';
-    });
-    six.addEventListener("click", () => {
+    };
+    const sixBtn = () => {
         calculatorIO.innerHTML += `<h1>6</h1>`;
         Memory += '6';
-    });
-    seven.addEventListener("click", () => {
+    };
+    const sevenBtn = () => {
         calculatorIO.innerHTML += `<h1>7</h1>`;
         Memory += '7';
-    });
-    eight.addEventListener("click", () => {
+    };
+    const eightBtn = () => {
         calculatorIO.innerHTML += `<h1>8</h1>`;
         Memory += '8';
-    });
-    nine.addEventListener("click", () => {
+    };
+    const nineBtn = () => {
         calculatorIO.innerHTML += `<h1>9</h1>`;
         Memory += '9';
+    };
+    const zeroBtn = () => {
+        calculatorIO.innerHTML += `<h1>0</h1>`;
+        Memory += '0';
+    };
+    // number button events
+    zero.addEventListener("click", () => {
+        zeroBtn();
+    });
+    one.addEventListener("click", () => {
+        oneBtn();
+    });
+    two.addEventListener("click", () => {
+        twoBtn();
+    });
+    three.addEventListener("click", () => {
+        threeBtn();
+    });
+    four.addEventListener("click", () => {
+        fourBtn();
+    });
+    five.addEventListener("click", () => {
+        fiveBtn();
+    });
+    six.addEventListener("click", () => {
+        sixBtn();
+    });
+    seven.addEventListener("click", () => {
+        sevenBtn();
+    });
+    eight.addEventListener("click", () => {
+        eightBtn();
+    });
+    nine.addEventListener("click", () => {
+        nineBtn();
     });
     // operations events
     addBtn.addEventListener("click", () => {
-        calculatorIO.innerHTML += `<h1>+</h1>`;
-        Memory += '+';
+        add();
     });
     subtractBtn.addEventListener("click", () => {
-        calculatorIO.innerHTML += `<h1>-</h1>`;
-        Memory += '-';
+        subtract();
     });
     multiplyBtn.addEventListener("click", () => {
-        calculatorIO.innerHTML += `<h1>x</h1>`;
-        Memory += '*';
+        multiply();
     });
     divideBtn.addEventListener("click", () => {
-        calculatorIO.innerHTML += `<h1>/</h1>`;
-        Memory += '/';
+        divide();
     });
     // decimal placement
     decimalBtn.addEventListener("click", () => {
-        calculatorIO.innerHTML += `<h1>.</h1>`;
-        Memory += '.';
+        decimal();
     });
     // completing operation
     equalsBtn.addEventListener("click", () => {
-        calculatorIO.innerHTML = `<h1>${EvaluateExpression(Memory)}</h1>`;
+        equal();
     });
+    // pressing keys
+    document.onkeyup = (event) => {
+        switch (event.key) {
+            case '0':
+                zeroBtn();
+                break;
+            case '1':
+                oneBtn();
+                break;
+            case '2':
+                twoBtn();
+                break;
+            case '3':
+                threeBtn();
+                break;
+            case '4':
+                fourBtn();
+                break;
+            case '5':
+                fiveBtn();
+                break;
+            case '6':
+                sixBtn();
+                break;
+            case '7':
+                sevenBtn();
+                break;
+            case '8':
+                eightBtn();
+                break;
+            case '9':
+                nineBtn();
+                break;
+            case '+':
+                add();
+                break;
+            case '-':
+                subtract();
+                break;
+            case '*':
+                multiply();
+                break;
+            case '/':
+                divide();
+                break;
+            case '.':
+                decimal();
+                break;
+            case '=':
+                equal();
+                break;
+        }
+        if (event.code == 'NumpadEnter' || event.code == 'Enter') {
+            equal();
+        }
+    };
 };
 export default {};
 //# sourceMappingURL=buttons.js.map
