@@ -26,7 +26,7 @@ const InputIsValid = (expression: string): Boolean => {
         return !isNaN(eval(expression)); 
     } catch (err) {
         return false;
-    }  
+    }
 }
 
 export default InputIsValid;

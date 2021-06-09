@@ -1,3 +1,16 @@
+body {
+    background-color: black;
+}
+
+header {
+    color: whitesmoke;
+}
+
+#calculator-io {
+    margin: 5%;
+    color: whitesmoke;
+}
+
 .light-up-on-key {
     transition: all 1s;
     color: blue;

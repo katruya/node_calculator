@@ -39,6 +39,7 @@ window.onload = () => {
 
     const clear = () => {
         calculatorIO.innerHTML = '';
+        Memory = '';
     }
 
     const add = () => {
@@ -265,8 +266,21 @@ window.onload = () => {
         }
 
         if (event.code == 'NumpadEnter' || event.code == 'Enter') {
+            equalsBtn.classList.toggle('light-up-on-key');
             equal();
         }
+        else if (event.code == 'Delete') {
+            clearBtn.classList.toggle('light-up-on-key');
+            clear();
+        }
+        else if (event.code == 'Backspace') {
+            if (Memory !== null && Memory != '') {
+                Memory = Memory.substr(0, Memory.length - 1);
+                calculatorIO.innerHTML = `<h1>${Memory}</h1>`
+            }
+            
+        }
+        
     }
 
     document.onkeyup = (event) => {
@@ -320,6 +334,14 @@ window.onload = () => {
                 equalsBtn.classList.toggle('light-up-on-key');
                 break;
         }
+
+        if (event.code == 'NumpadEnter' || event.code == 'Enter') {
+            equalsBtn.classList.toggle('light-up-on-key');
+        }
+        else if (event.code == 'Delete') {
+            clearBtn.classList.toggle('light-up-on-key');
+        }
+        
     }
 };
 
