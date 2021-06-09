@@ -1,8 +1,12 @@
+import InputIsValid from './error_handler.js';
 import EvaluateExpression from './evaluate.js';
 // make sure DOM is loaded
 window.onload = () => {
+    const placeholderText = `<h1>0</h1>`;
     // memory for calculation
-    let Memory = '';
+    let Memory = '0';
+    // lets us know if there was a syntax error
+    let Err = false;
     // number buttons
     let zero = document.getElementById('zero');
     let one = document.getElementById('one');
@@ -24,78 +28,93 @@ window.onload = () => {
     // equals
     let equalsBtn = document.getElementById('equals');
     // input area
-    let calculatorIO = document.getElementById('calculator-io');
+    let output = document.getElementById('calculator-io');
+    // simplifies code
+    output.innerHTML = placeholderText;
     // clear, etc
     let clearBtn = document.getElementById('clear');
     // button functions
     const clear = () => {
-        calculatorIO.innerHTML = '';
+        output.innerHTML = placeholderText;
         Memory = '';
     };
+    const isDefault = () => {
+        return output.innerHTML == placeholderText;
+    };
+    const initialize = (symbol, text) => {
+        if ((isDefault() || !InputIsValid(Memory)) && symbol != '.') {
+            output.innerHTML = text;
+        }
+        else {
+            output.innerHTML += text;
+        }
+        Memory += symbol;
+    };
     const add = () => {
-        calculatorIO.innerHTML += `<h1>+</h1>`;
-        Memory += '+';
+        const additionText = `<h1>+</h1>`;
+        initialize('+', additionText);
     };
     const subtract = () => {
-        calculatorIO.innerHTML += `<h1>-</h1>`;
-        Memory += '-';
+        const subtractionText = `<h1>-</h1>`;
+        initialize('-', subtractionText);
     };
     const multiply = () => {
-        calculatorIO.innerHTML += `<h1>x</h1>`;
-        Memory += '*';
+        const multiplyText = `<h1>x</h1>`;
+        initialize('*', multiplyText);
     };
     const divide = () => {
-        calculatorIO.innerHTML += `<h1>/</h1>`;
-        Memory += '/';
+        const divideText = `<h1>/</h1>`;
+        initialize('/', divideText);
     };
     const equal = () => {
-        calculatorIO.innerHTML = `<h1>${EvaluateExpression(Memory)}</h1>`;
+        Memory = EvaluateExpression(Memory).toString();
+        output.innerHTML = `<h1>${Memory}</h1>`;
+        // console.log(Memory); // debugging
     };
     const decimal = () => {
-        calculatorIO.innerHTML += `<h1>.</h1>`;
-        Memory += '.';
+        const decimalText = `<h1>.</h1>`;
+        initialize('.', decimalText);
     };
+    // number buttons
     const oneBtn = () => {
-        // store 1 in input area
-        calculatorIO.innerHTML += `<h1>1</h1>`;
-        // store for calculation
-        Memory += '1';
+        const oneText = `<h1>1</h1>`;
+        initialize('1', oneText);
     };
     const twoBtn = () => {
-        calculatorIO.innerHTML += `<h1>2</h1>`;
-        Memory += '2';
+        const twoText = `<h1>2</h1>`;
+        initialize('2', twoText);
     };
     const threeBtn = () => {
-        calculatorIO.innerHTML += `<h1>3</h1>`;
-        Memory += '3';
+        const threeText = `<h1>3</h1>`;
+        initialize('3', threeText);
     };
     const fourBtn = () => {
-        calculatorIO.innerHTML += `<h1>4</h1>`;
-        Memory += '4';
+        const fourText = `<h1>4</h1>`;
+        initialize('4', fourText);
     };
     const fiveBtn = () => {
-        calculatorIO.innerHTML += `<h1>5</h1>`;
-        Memory += '5';
+        const fiveText = `<h1>5</h1>`;
+        initialize('5', fiveText);
     };
     const sixBtn = () => {
-        calculatorIO.innerHTML += `<h1>6</h1>`;
-        Memory += '6';
+        const sixText = `<h1>6</h1>`;
+        initialize('6', sixText);
     };
     const sevenBtn = () => {
-        calculatorIO.innerHTML += `<h1>7</h1>`;
-        Memory += '7';
+        const sevenText = `<h1>7</h1>`;
+        initialize('7', sevenText);
     };
     const eightBtn = () => {
-        calculatorIO.innerHTML += `<h1>8</h1>`;
-        Memory += '8';
+        const eightText = `<h1>8</h1>`;
+        initialize('8', eightText);
     };
     const nineBtn = () => {
-        calculatorIO.innerHTML += `<h1>9</h1>`;
-        Memory += '9';
+        const nineText = `<h1>9</h1>`;
+        initialize('9', nineText);
     };
     const zeroBtn = () => {
-        calculatorIO.innerHTML += `<h1>0</h1>`;
-        Memory += '0';
+        const zeroText = `<h1>0</h1>`;
+        initialize('0', zeroText);
     };
     // number button events
     zero.addEventListener("click", () => {
@@ -232,7 +251,7 @@ window.onload = () => {
         else if (event.code == 'Backspace') {
             if (Memory !== null && Memory != '') {
                 Memory = Memory.substr(0, Memory.length - 1);
-                calculatorIO.innerHTML = `<h1>${Memory}</h1>`;
+                output.innerHTML = `<h1>${Memory}</h1>`;
             }
         }
     };
