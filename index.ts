@@ -34,6 +34,11 @@ const Definition: string = `
        ${CalculatorBtn('=', 'equals')}
        ${CalculatorBtn('+', 'plus')}
     </div>
+   <div class="row">
+      ${CalculatorBtn('CLEAR', 'clear')}
+      ${CalculatorBtn('Usage', 'help')}
+      ${CalculatorBtn('About', 'about')}
+   </div>
 `;
 
 UI(Definition);
