@@ -19,19 +19,27 @@ const isOperator = (input) => {
     const operators = ['+', '-', '*', '/'];
     return input in operators;
 };
-const InputIsValid = (input) => {
-    const inputArr = input.split('');
-    let count = 0;
-    inputArr.forEach(item => {
-        let operatorArr = [];
-        if (isOperator(item)) {
-            operatorArr.push(item);
-        }
-        operatorArr.forEach(operator => {
-            count++;
-        });
-    });
-    return (isOperator(input) || isOperator(input[0]) || isOperator(input[input.length - 1]) || count < 2);
+const InputIsValid = (expression) => {
+    try {
+        return !isNaN(eval(expression));
+    }
+    catch (err) {
+        return false;
+    }
 };
+// const InputIsValid = (input: string): Boolean => {
+//     const inputArr = input.split('');
+//     let count = 0;
+//     inputArr.forEach(item => {
+//         let operatorArr: Array<string> = [];
+//         if (isOperator(item)) {
+//             operatorArr.push(item);
+//         } 
+//         operatorArr.forEach(operator => {
+//             count++;
+//         });
+//     });
+//     return (isOperator(input) || isOperator(input[0]) || isOperator(input[input.length - 1]) || count < 2);
+// };
 export default InputIsValid;
 //# sourceMappingURL=error_handler.js.map
