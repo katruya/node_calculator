@@ -1,0 +1,4 @@
+tsc app.ts -outFile scripts/app.js --module system
+tsc index.ts -outFile scripts/index.js --module system
+tsc calculator.ts -outFile scripts/calculator.js --module system
+tsc utils/Render.ts -outFile scripts/utils/Render.js --module system
