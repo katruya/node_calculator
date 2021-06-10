@@ -9,9 +9,6 @@ body {
     font-family: 'Courier New', Courier, monospace;
 }
 
-#mem-out {
-    margin-top: 5%;
-}
 
 .light-up-on-key {
     transition: all 1s;

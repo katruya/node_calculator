@@ -5,6 +5,7 @@ import EvaluateExpression from './evaluate.js';
 window.onload = () => {
     const placeholderText: string = `<h1>0</h1>`;
     let Memory: string = '';
+    let disk: string = Memory;
 
     // number buttons
     let zero: Element = document.getElementById('zero');
@@ -33,6 +34,7 @@ window.onload = () => {
     // input area
     let output: Element = document.getElementById('calculator-io');
     let memoryOutput: Element = document.getElementById('mem-out');
+    let prevOutput: Element = document.getElementById('prev-calc');
 
     // simplifies code
     output.innerHTML = placeholderText;
@@ -43,8 +45,9 @@ window.onload = () => {
     // button functions
     const clear = () => {
         output.innerHTML = placeholderText;
-        memoryOutput.innerHTML = `<h3>[]</h3>`;
         Memory = '';
+        disk = Memory;
+        memoryOutput.innerHTML = '<h3>[ ]</h3>';
     }
 
     const isDefault = () => {
@@ -60,7 +63,10 @@ window.onload = () => {
                
         }
         Memory += symbol;
-        memoryOutput.innerHTML = `<h3>[${Memory}]</h3>`; 
+
+        disk = Memory;
+        
+        memoryOutput.innerHTML = `<h3>[${disk}]`;
     }
 
     const add = () => {
@@ -86,8 +92,14 @@ window.onload = () => {
 
     const equal = () => {
         let result = EvaluateExpression(Memory).toString();
-        output.innerHTML = `<h1>${result}</h1>`;
-        // console.log(Memory); // debugging
+        output.innerHTML = `<h1>${result}</h1>`; // outputs
+        prevOutput.innerHTML += `
+            <div class="row">
+                <h3>[${disk}=${result}]</div>
+            </div>
+        `;
+        clear();
+        
     }
     
     const decimal = () => {
