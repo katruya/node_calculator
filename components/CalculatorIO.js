@@ -1,6 +1,8 @@
 const CalculatorIO = () => {
     return `
-        <div id="calculator-io" class="row text-left">
+        <div id="mem-out" class="row">
+        </div>
+        <div id="calculator-io" class="row">
             <h1>0</h1>
         </div>
     `;

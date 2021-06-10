@@ -1,15 +1,10 @@
 import InputIsValid from './error_handler.js';
-import EvaluateExpression from './evaluate.js'
+import EvaluateExpression from './evaluate.js';
 
 // make sure DOM is loaded
 window.onload = () => {
     const placeholderText: string = `<h1>0</h1>`;
-    
-    // memory for calculation
-    let Memory: string = '0';
-
-    // lets us know if there was a syntax error
-    let Err: Boolean = false;
+    let Memory: string = '';
 
     // number buttons
     let zero: Element = document.getElementById('zero');
@@ -37,6 +32,7 @@ window.onload = () => {
 
     // input area
     let output: Element = document.getElementById('calculator-io');
+    let memoryOutput: Element = document.getElementById('mem-out');
 
     // simplifies code
     output.innerHTML = placeholderText;
@@ -47,6 +43,7 @@ window.onload = () => {
     // button functions
     const clear = () => {
         output.innerHTML = placeholderText;
+        memoryOutput.innerHTML = `<h3>[]</h3>`;
         Memory = '';
     }
 
@@ -59,9 +56,11 @@ window.onload = () => {
             output.innerHTML = text;
         } 
         else {
-            output.innerHTML += text;    
+            output.innerHTML += text;
+               
         }
         Memory += symbol;
+        memoryOutput.innerHTML = `<h3>[${Memory}]</h3>`; 
     }
 
     const add = () => {
@@ -86,8 +85,8 @@ window.onload = () => {
     }
 
     const equal = () => {
-        Memory = EvaluateExpression(Memory).toString();
-        output.innerHTML = `<h1>${Memory}</h1>`;
+        let result = EvaluateExpression(Memory).toString();
+        output.innerHTML = `<h1>${result}</h1>`;
         // console.log(Memory); // debugging
     }
     

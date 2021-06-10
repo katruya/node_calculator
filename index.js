@@ -1,10 +1,20 @@
 import UI from './app.js';
 import CalculatorBtn from './components/CalculatorBtn.js';
 import CalculatorIO from './components/CalculatorIO.js';
-import Header from './components/Header.js';
 const Definition = `
-    ${Header()}
     ${CalculatorIO()}
+    <div class="row">
+      <div class="col">
+         ${CalculatorBtn('sqrt', 'sqrt')}
+         ${CalculatorBtn('pow', 'pow')}
+         ${CalculatorBtn('mod', 'modulus')}
+      </div>
+      <div class="col">
+         ${CalculatorBtn('CLEAR', 'clear')}
+         ${CalculatorBtn('Usage', 'help')}
+         ${CalculatorBtn('About', 'about')}
+      </div>
+    </div>
     <div class="row">
         ${CalculatorBtn('7', 'seven')}
         ${CalculatorBtn('8', 'eight')}
@@ -32,11 +42,6 @@ const Definition = `
        ${CalculatorBtn('=', 'equals')}
        ${CalculatorBtn('+', 'plus')}
     </div>
-   <div class="row">
-      ${CalculatorBtn('CLEAR', 'clear')}
-      ${CalculatorBtn('Usage', 'help')}
-      ${CalculatorBtn('About', 'about')}
-   </div>
 `;
 UI(Definition);
 //# sourceMappingURL=index.js.map

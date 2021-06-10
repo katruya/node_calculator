@@ -2,13 +2,15 @@ body {
     background-color: black;
 }
 
-header {
-    color: whitesmoke;
+#calculator-io {
+    margin-top: 6%;
+    margin-left: 6%;
+    color: green;
+    font-family: 'Courier New', Courier, monospace;
 }
 
-#calculator-io {
-    margin: 5%;
-    color: whitesmoke;
+#mem-out {
+    margin-top: 5%;
 }
 
 .light-up-on-key {

@@ -3,10 +3,7 @@ import EvaluateExpression from './evaluate.js';
 // make sure DOM is loaded
 window.onload = () => {
     const placeholderText = `<h1>0</h1>`;
-    // memory for calculation
-    let Memory = '0';
-    // lets us know if there was a syntax error
-    let Err = false;
+    let Memory = '';
     // number buttons
     let zero = document.getElementById('zero');
     let one = document.getElementById('one');
@@ -29,6 +26,7 @@ window.onload = () => {
     let equalsBtn = document.getElementById('equals');
     // input area
     let output = document.getElementById('calculator-io');
+    let memoryOutput = document.getElementById('mem-out');
     // simplifies code
     output.innerHTML = placeholderText;
     // clear, etc
@@ -36,6 +34,7 @@ window.onload = () => {
     // button functions
     const clear = () => {
         output.innerHTML = placeholderText;
+        memoryOutput.innerHTML = `<h3>[]</h3>`;
         Memory = '';
     };
     const isDefault = () => {
@@ -49,6 +48,7 @@ window.onload = () => {
             output.innerHTML += text;
         }
         Memory += symbol;
+        memoryOutput.innerHTML = `<h3>[${Memory}]</h3>`;
     };
     const add = () => {
         const additionText = `<h1>+</h1>`;
@@ -67,8 +67,8 @@ window.onload = () => {
         initialize('/', divideText);
     };
     const equal = () => {
-        Memory = EvaluateExpression(Memory).toString();
-        output.innerHTML = `<h1>${Memory}</h1>`;
+        let result = EvaluateExpression(Memory).toString();
+        output.innerHTML = `<h1>${result}</h1>`;
         // console.log(Memory); // debugging
     };
     const decimal = () => {
